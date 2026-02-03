@@ -1,0 +1,177 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:my_sales/core/routes/routes_name.dart';
+import 'package:my_sales/feature/auth/domain/entities/new_user_entity.dart';
+import 'package:my_sales/feature/auth/domain/validators/new_user_validation.dart';
+import 'package:my_sales/feature/auth/presentation/controller/auth_controller.dart';
+import 'package:provider/provider.dart';
+
+class SignUpPage extends StatelessWidget {
+  SignUpPage({super.key});
+  final validator = NewUserValidation();
+
+  final _key = GlobalKey<FormState>();
+  final user = NewUserEntity.toEmpty();
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = context.watch<AuthController>();
+
+    return Scaffold(
+      body: Form(
+        key: _key,
+        child: SafeArea(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: SizedBox(
+                height: double.infinity,
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: AlignmentGeometry.topCenter,
+                      child: Row(
+                        spacing: 12,
+                        mainAxisAlignment: .center,
+                        children: [
+                          Align(
+                            alignment: AlignmentGeometry.centerLeft,
+                            child: IconButton(
+                              onPressed: () => context.go(RoutesName.login),
+                              icon: Icon(LucideIcons.chevronLeft),
+                            ),
+                          ),
+                          Image.asset(
+                            "assets/sales_icon.png",
+                            height: 64,
+                            width: 64,
+                          ),
+                          Text(
+                            "Minhas Vendas",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: .center,
+                        crossAxisAlignment: .center,
+                        children: [
+                          TextFormField(
+                            onChanged: user.setUserName,
+                            validator: validator.byField(user, "name"),
+                            decoration: InputDecoration(
+                              constraints: BoxConstraints(maxHeight: 60),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              label: Text("Nome"),
+                            ),
+                            style: TextStyle(),
+                          ),
+                          SizedBox(height: 24.h),
+                          TextFormField(
+                            onChanged: user.setEmail,
+                            validator: validator.byField(user, "email"),
+                            decoration: InputDecoration(
+                              constraints: BoxConstraints(maxHeight: 60),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              label: Text("E-mail"),
+                            ),
+                            style: TextStyle(),
+                          ),
+                          SizedBox(height: 24.h),
+                          TextFormField(
+                            onChanged: user.setPassword,
+                            validator: validator.byField(user, 'password'),
+                            obscureText: controller.showPassword,
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.lock),
+                              suffixIcon: IconButton(
+                                onPressed: controller.setShowPassword,
+                                icon: Icon(
+                                  controller.showPassword
+                                      ? LucideIcons.eyeOff
+                                      : LucideIcons.eye,
+                                ),
+                              ),
+                              constraints: BoxConstraints(maxHeight: 60),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              label: Text("Senha"),
+                            ),
+                            style: TextStyle(),
+                          ),
+                          SizedBox(height: 24.h),
+                          TextFormField(
+                            validator: validator.byField(user, 'confirm'),
+                            onChanged: user.setConfirmPassword,
+                            obscureText: controller.showConfirm,
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.lock),
+                              suffixIcon: IconButton(
+                                onPressed: controller.setShowConfirm,
+                                icon: Icon(
+                                  controller.showConfirm
+                                      ? LucideIcons.eyeOff
+                                      : LucideIcons.eye,
+                                ),
+                              ),
+                              constraints: BoxConstraints(maxHeight: 60),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              label: Text("Confirmar senha"),
+                            ),
+                            style: TextStyle(),
+                          ),
+                          SizedBox(height: 40.h),
+                          GestureDetector(
+                            onTap: () async {
+                              HapticFeedback.vibrate();
+                              if (_key.currentState!.validate()) {
+                                final result = await controller.signUp(
+                                  user: user,
+                                );
+                                if (result) {
+                                  context.go(RoutesName.home);
+                                }
+                              }
+                            },
+                            child: Container(
+                              height: 48.h,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: Color(0xfff1e90ff),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Criar conta",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
