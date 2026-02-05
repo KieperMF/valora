@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_sales/core/routes/app_pages.dart';
 import 'package:my_sales/injection.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
+  await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
-    url: 'https://axodekkbverscojwxjzz.supabase.co',
-    anonKey: 'sb_publishable_Cpdf4tas_rAZ9w8O74mcQQ_j9BlO5ON',
+    url: dotenv.env['supabaseURl']!,
+    anonKey: dotenv.env['supabaseKey']!,
   );
   setupDepencies();
   runApp(const MyApp());
