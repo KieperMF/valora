@@ -48,6 +48,7 @@ class _CustomerRegisterPageState extends State<CustomerRegisterPage> {
               children: [
                 Expanded(
                   child: Column(
+                    spacing: 12.h,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextFormField(

@@ -17,6 +17,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 final authNotifier = AuthNotifier(Supabase.instance.client);
 final productController = ProductController();
 final homeController = HomeController();
+final customerController = CustomerController();
 
 final router = GoRouter(
   initialLocation: RoutesName.home,
@@ -81,8 +82,8 @@ final router = GoRouter(
 
     GoRoute(
       path: RoutesName.customerRegister,
-      builder: (context, state) => ChangeNotifierProvider.value(
-        value: CustomerController(),
+      builder: (context, state) => ChangeNotifierProvider(
+        create: (context) => CustomerController(),
         child: CustomerRegisterPage(),
       ),
     ),

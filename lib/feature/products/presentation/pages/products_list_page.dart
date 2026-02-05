@@ -20,6 +20,7 @@ class _ProductsListPageState extends State<ProductsListPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
       context.read<ProductController>().fetchProducts();
     });
   }
@@ -144,7 +145,7 @@ class _ProductsListPageState extends State<ProductsListPage> {
     return Align(
       alignment: AlignmentGeometry.topLeft,
       child: SizedBox(
-        width: 230.h,
+        width: 230.w,
         child: Card(
           color: Colors.green,
           child: Center(
