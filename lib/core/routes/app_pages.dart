@@ -21,6 +21,7 @@ final customerController = CustomerController();
 
 final router = GoRouter(
   initialLocation: RoutesName.home,
+  refreshListenable: authNotifier,
 
   redirect: (context, state) {
     debugPrint('redirect');
@@ -73,8 +74,8 @@ final router = GoRouter(
     GoRoute(
       path: RoutesName.registerProduct,
       builder: (context, state) {
-        return ChangeNotifierProvider.value(
-          value: ProductController(),
+        return ChangeNotifierProvider(
+          create: (context) => ProductController(),
           child: const ProductRegisterPage(),
         );
       },
