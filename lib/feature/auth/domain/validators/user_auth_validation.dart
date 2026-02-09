@@ -1,5 +1,5 @@
 import 'package:lucid_validation/lucid_validation.dart';
-import 'package:my_sales/feature/auth/domain/entities/user_auth_entity.dart';
+import 'package:valora/feature/auth/domain/entities/user_auth_entity.dart';
 
 class UserAuthValidation extends LucidValidator<UserAuthEntity> {
   UserAuthValidation() {

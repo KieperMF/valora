@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_sales/feature/customer/presentation/pages/customer_list_page.dart';
-import 'package:my_sales/feature/home/presentation/controllers/home_controller.dart';
-import 'package:my_sales/feature/home/presentation/pages/home_page.dart';
-import 'package:my_sales/feature/products/presentation/pages/products_list_page.dart';
+import 'package:valora/feature/customer/presentation/pages/customer_list_page.dart';
+import 'package:valora/feature/home/presentation/controllers/home_controller.dart';
+import 'package:valora/feature/home/presentation/pages/home_page.dart';
+import 'package:valora/feature/products/presentation/pages/products_list_page.dart';
 import 'package:provider/provider.dart';
 
 class HomeNavigation extends StatelessWidget {

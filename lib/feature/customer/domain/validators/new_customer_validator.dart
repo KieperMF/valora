@@ -1,5 +1,5 @@
 import 'package:lucid_validation/lucid_validation.dart';
-import 'package:my_sales/feature/customer/domain/entities/customer_entity.dart';
+import 'package:valora/feature/customer/domain/entities/customer_entity.dart';
 
 class NewCustomerValidator extends LucidValidator<CustomerEntity> {
   NewCustomerValidator() {

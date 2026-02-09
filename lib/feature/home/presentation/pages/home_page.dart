@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:my_sales/core/colors/app_colors.dart';
-import 'package:my_sales/feature/home/presentation/controllers/home_controller.dart';
+import 'package:valora/core/colors/app_colors.dart';
+import 'package:valora/feature/home/presentation/controllers/home_controller.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {

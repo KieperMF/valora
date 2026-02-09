@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_sales/feature/auth/domain/entities/new_user_entity.dart';
-import 'package:my_sales/feature/auth/domain/entities/user_auth_entity.dart';
-import 'package:my_sales/feature/auth/domain/repositories/user_auth_repository.dart';
-import 'package:my_sales/injection.dart';
+import 'package:valora/feature/auth/domain/entities/new_user_entity.dart';
+import 'package:valora/feature/auth/domain/entities/user_auth_entity.dart';
+import 'package:valora/feature/auth/domain/repositories/user_auth_repository.dart';
+import 'package:valora/injection.dart';
 
 class AuthController extends ChangeNotifier {
   final _repository = sl<UserAuthRepository>();

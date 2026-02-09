@@ -1,4 +1,4 @@
-import 'package:my_sales/feature/customer/domain/entities/customer_entity.dart';
+import 'package:valora/feature/customer/domain/entities/customer_entity.dart';
 import 'package:result_dart/result_dart.dart';
 
 abstract class CustomerRepository {

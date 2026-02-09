@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:my_sales/feature/customer/data/dtos/customer_dto.dart';
+import 'package:valora/feature/customer/data/dtos/customer_dto.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

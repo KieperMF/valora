@@ -1,8 +1,8 @@
-import 'package:my_sales/feature/products/data/datasource/product_datasource.dart';
-import 'package:my_sales/feature/products/data/mappers/product_mapper.dart';
-import 'package:my_sales/feature/products/domain/entities/product_entity.dart';
-import 'package:my_sales/feature/products/domain/repositories/product_repository.dart';
-import 'package:my_sales/injection.dart';
+import 'package:valora/feature/products/data/datasource/product_datasource.dart';
+import 'package:valora/feature/products/data/mappers/product_mapper.dart';
+import 'package:valora/feature/products/domain/entities/product_entity.dart';
+import 'package:valora/feature/products/domain/repositories/product_repository.dart';
+import 'package:valora/injection.dart';
 import 'package:result_dart/result_dart.dart';
 
 class ProductRepositoryImpl implements ProductReository {

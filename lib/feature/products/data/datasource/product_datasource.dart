@@ -1,4 +1,4 @@
-import 'package:my_sales/feature/products/data/dto/product_dto.dart';
+import 'package:valora/feature/products/data/dto/product_dto.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

@@ -1,5 +1,5 @@
-import 'package:my_sales/feature/customer/data/dtos/customer_dto.dart';
-import 'package:my_sales/feature/customer/domain/entities/customer_entity.dart';
+import 'package:valora/feature/customer/data/dtos/customer_dto.dart';
+import 'package:valora/feature/customer/domain/entities/customer_entity.dart';
 
 extension CustomerMapperDto on CustomerDto {
   CustomerEntity toEntity() {

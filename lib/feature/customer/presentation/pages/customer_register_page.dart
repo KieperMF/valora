@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:my_sales/core/colors/app_colors.dart';
-import 'package:my_sales/core/routes/routes_name.dart';
-import 'package:my_sales/feature/customer/domain/entities/customer_entity.dart';
-import 'package:my_sales/feature/customer/domain/validators/new_customer_validator.dart';
-import 'package:my_sales/feature/customer/presentation/controllers/customer_controller.dart';
+import 'package:valora/core/colors/app_colors.dart';
+import 'package:valora/core/routes/routes_name.dart';
+import 'package:valora/feature/customer/domain/entities/customer_entity.dart';
+import 'package:valora/feature/customer/domain/validators/new_customer_validator.dart';
+import 'package:valora/feature/customer/presentation/controllers/customer_controller.dart';
 import 'package:provider/provider.dart';
 
 class CustomerRegisterPage extends StatefulWidget {

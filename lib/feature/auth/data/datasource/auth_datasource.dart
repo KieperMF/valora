@@ -1,4 +1,4 @@
-import 'package:my_sales/feature/auth/data/dto/user_auth_dto.dart';
+import 'package:valora/feature/auth/data/dto/user_auth_dto.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

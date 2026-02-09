@@ -1,5 +1,5 @@
 import 'package:lucid_validation/lucid_validation.dart';
-import 'package:my_sales/feature/products/domain/entities/product_entity.dart';
+import 'package:valora/feature/products/domain/entities/product_entity.dart';
 
 class ProductValidator extends LucidValidator<ProductEntity> {
   ProductValidator() {

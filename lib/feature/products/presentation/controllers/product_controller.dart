@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:my_sales/feature/products/domain/entities/product_entity.dart';
-import 'package:my_sales/feature/products/domain/repositories/product_repository.dart';
-import 'package:my_sales/injection.dart';
+import 'package:valora/feature/products/domain/entities/product_entity.dart';
+import 'package:valora/feature/products/domain/repositories/product_repository.dart';
+import 'package:valora/injection.dart';
 import 'package:result_dart/result_dart.dart';
 
 class ProductController extends ChangeNotifier {

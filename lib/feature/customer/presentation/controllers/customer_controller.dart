@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:my_sales/feature/customer/domain/entities/customer_entity.dart';
-import 'package:my_sales/feature/customer/domain/repositories/customer_repository.dart';
-import 'package:my_sales/injection.dart';
+import 'package:valora/feature/customer/domain/entities/customer_entity.dart';
+import 'package:valora/feature/customer/domain/repositories/customer_repository.dart';
+import 'package:valora/injection.dart';
 import 'package:result_dart/result_dart.dart';
 
 class CustomerController extends ChangeNotifier {

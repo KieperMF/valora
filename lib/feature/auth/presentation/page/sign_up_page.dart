@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:my_sales/core/routes/routes_name.dart';
-import 'package:my_sales/feature/auth/domain/entities/new_user_entity.dart';
-import 'package:my_sales/feature/auth/domain/validators/new_user_validation.dart';
-import 'package:my_sales/feature/auth/presentation/controller/auth_controller.dart';
+import 'package:valora/core/routes/routes_name.dart';
+import 'package:valora/feature/auth/domain/entities/new_user_entity.dart';
+import 'package:valora/feature/auth/domain/validators/new_user_validation.dart';
+import 'package:valora/feature/auth/presentation/controller/auth_controller.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPage extends StatelessWidget {

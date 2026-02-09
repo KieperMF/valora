@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_sales/core/middlewares/auth_middleware.dart';
-import 'package:my_sales/core/routes/routes_name.dart';
-import 'package:my_sales/feature/auth/presentation/controller/auth_controller.dart';
-import 'package:my_sales/feature/auth/presentation/page/login_page.dart';
-import 'package:my_sales/feature/auth/presentation/page/sign_up_page.dart';
-import 'package:my_sales/feature/customer/presentation/controllers/customer_controller.dart';
-import 'package:my_sales/feature/customer/presentation/pages/customer_register_page.dart';
-import 'package:my_sales/feature/home/presentation/controllers/home_controller.dart';
-import 'package:my_sales/feature/home/presentation/pages/home_navigation.dart';
-import 'package:my_sales/feature/products/presentation/controllers/product_controller.dart';
-import 'package:my_sales/feature/products/presentation/pages/product_register_page.dart';
+import 'package:valora/core/middlewares/auth_middleware.dart';
+import 'package:valora/core/routes/routes_name.dart';
+import 'package:valora/feature/auth/presentation/controller/auth_controller.dart';
+import 'package:valora/feature/auth/presentation/page/login_page.dart';
+import 'package:valora/feature/auth/presentation/page/sign_up_page.dart';
+import 'package:valora/feature/customer/presentation/controllers/customer_controller.dart';
+import 'package:valora/feature/customer/presentation/pages/customer_register_page.dart';
+import 'package:valora/feature/home/presentation/controllers/home_controller.dart';
+import 'package:valora/feature/home/presentation/pages/home_navigation.dart';
+import 'package:valora/feature/products/presentation/controllers/product_controller.dart';
+import 'package:valora/feature/products/presentation/pages/product_register_page.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_sales/core/routes/app_pages.dart';
-import 'package:my_sales/injection.dart';
+import 'package:valora/core/routes/app_pages.dart';
+import 'package:valora/injection.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {

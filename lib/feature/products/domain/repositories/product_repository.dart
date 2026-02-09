@@ -1,4 +1,4 @@
-import 'package:my_sales/feature/products/domain/entities/product_entity.dart';
+import 'package:valora/feature/products/domain/entities/product_entity.dart';
 import 'package:result_dart/result_dart.dart';
 
 abstract class ProductReository {

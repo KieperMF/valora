@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:my_sales/core/colors/app_colors.dart';
-import 'package:my_sales/core/routes/routes_name.dart';
-import 'package:my_sales/feature/products/domain/entities/product_entity.dart';
-import 'package:my_sales/feature/products/presentation/controllers/product_controller.dart';
+import 'package:valora/core/colors/app_colors.dart';
+import 'package:valora/core/routes/routes_name.dart';
+import 'package:valora/feature/products/domain/entities/product_entity.dart';
+import 'package:valora/feature/products/presentation/controllers/product_controller.dart';
 import 'package:provider/provider.dart';
 
 class ProductsListPage extends StatefulWidget {
