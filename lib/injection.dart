@@ -11,6 +11,9 @@ import 'package:valora/feature/home/domain/repositories/home_repository.dart';
 import 'package:valora/feature/products/data/datasource/product_datasource.dart';
 import 'package:valora/feature/products/data/repositories/product_repository_impl.dart';
 import 'package:valora/feature/products/domain/repositories/product_repository.dart';
+import 'package:valora/feature/sales/data/datasource/sales_datasource.dart';
+import 'package:valora/feature/sales/data/repositoies/sale_repository_impl.dart';
+import 'package:valora/feature/sales/domain/repositories/sale_repository.dart';
 
 final sl = GetIt.instance;
 
@@ -20,10 +23,12 @@ void setupDepencies() {
   sl.registerSingleton<HomeDatasource>(HomeDatasource());
   sl.registerSingleton<ProductDatasource>(ProductDatasource());
   sl.registerSingleton<CustomerDatasource>(CustomerDatasource());
+  sl.registerSingleton<SalesDatasource>(SalesDatasource());
 
   //Repositories
   sl.registerSingleton<UserAuthRepository>(AuthRepositoryImpl());
   sl.registerSingleton<HomeRepository>(HomeRepositoryImpl());
   sl.registerSingleton<ProductReository>(ProductRepositoryImpl());
   sl.registerSingleton<CustomerRepository>(CustomerRepositoryImpl());
+  sl.registerSingleton<SaleRepository>(SaleRepositoryImpl());
 }

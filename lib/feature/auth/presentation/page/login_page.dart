@@ -42,7 +42,7 @@ class LoginPage extends StatelessWidget {
                             width: 64,
                           ),
                           Text(
-                            "Minhas Vendas",
+                            "Valora",
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,

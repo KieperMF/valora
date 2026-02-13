@@ -15,10 +15,8 @@ class ProductRepositoryImpl implements ProductReository {
 
   @override
   AsyncResult<List<ProductEntity>> getProducts() async {
-    final result = await data.getProducts();
-    return result.mapFold(
-      (success) => success.map((e) => e.toEntity()).toList(),
-      (failure) => Exception(failure),
+    return data.getProducts().map(
+      (productsDto) => productsDto.map((dto) => dto.toEntity()).toList(),
     );
   }
 }
