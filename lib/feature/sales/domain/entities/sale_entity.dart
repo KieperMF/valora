@@ -32,4 +32,32 @@ class SaleEntity {
       items: List.empty(),
     );
   }
+
+  set setId(String? value) {
+    id = value;
+  }
+
+  set setCustomerId(String value) {
+    customerId = value;
+  }
+
+  set setCompanyId(String value) {
+    companyId = value;
+  }
+
+  set setTotalPrice(double value) {
+    totalPrice = value;
+  }
+
+  set setQuantity(int value) {
+    quantity = value;
+  }
+
+  set setPaymentMethod(String value) {
+    paymentMethod = value;
+  }
+
+  set setCustomerName(String value) {
+    customerName = value;
+  }
 }

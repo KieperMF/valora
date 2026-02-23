@@ -13,11 +13,14 @@ import 'package:valora/feature/products/presentation/controllers/product_control
 import 'package:valora/feature/products/presentation/pages/product_register_page.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:valora/feature/sales/presentation/controllers/sale_controller.dart';
+import 'package:valora/feature/sales/presentation/pages/register_sale_page.dart';
 
 final authNotifier = AuthNotifier(Supabase.instance.client);
 final productController = ProductController();
 final homeController = HomeController();
 final customerController = CustomerController();
+final saleController = SaleController();
 
 final router = GoRouter(
   initialLocation: RoutesName.home,
@@ -49,8 +52,9 @@ final router = GoRouter(
         return MultiProvider(
           providers: [
             ChangeNotifierProvider.value(value: homeController),
-            ChangeNotifierProvider(create: (context) => ProductController()),
+            ChangeNotifierProvider.value(value: productController),
             ChangeNotifierProvider(create: (context) => CustomerController()),
+            ChangeNotifierProvider(create: (context) => SaleController()),
           ],
           child: const HomeNavigation(),
         );
@@ -87,6 +91,11 @@ final router = GoRouter(
         create: (context) => CustomerController(),
         child: CustomerRegisterPage(),
       ),
+    ),
+
+    GoRoute(
+      path: RoutesName.saleRegister,
+      builder: (context, state) => RegisterSalePage(),
     ),
   ],
 );

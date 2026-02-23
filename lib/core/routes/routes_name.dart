@@ -6,4 +6,5 @@ class RoutesName {
   static final String registerProduct = "/register-product";
   static final String customerList = "/customer-list";
   static final String customerRegister = "/customer-register";
+  static final String saleRegister = "/sale-register";
 }
