@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:valora/feature/auth/data/dto/user_auth_dto.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -11,7 +12,7 @@ class AuthDatasource {
         password: user.password,
         email: user.email,
       );
-
+      debugPrint('Login successful: ${supa.auth.currentSession?.accessToken}');
       return Success(unit);
     } on AuthApiException catch (e) {
       return Failure(AuthApiException(e.message));
@@ -32,5 +33,9 @@ class AuthDatasource {
     } catch (e) {
       return Failure(Exception(e));
     }
+  }
+
+  Future<void> logout() async {
+    await supa.auth.signOut();
   }
 }

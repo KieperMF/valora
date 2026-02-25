@@ -100,6 +100,7 @@ class LoginPage extends StatelessWidget {
                                 final result = await controller.login(
                                   user: user,
                                 );
+                                debugPrint("Login result: $result");
                                 result ? context.go(RoutesName.home) : null;
                               }
                             },

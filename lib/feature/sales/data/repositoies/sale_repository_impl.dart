@@ -19,4 +19,9 @@ class SaleRepositoryImpl implements SaleRepository {
       (salesDto) => salesDto.map((dto) => dto.toEntity()).toList(),
     );
   }
+
+  @override
+  Future<void> logout() async {
+    return await _datasource.logout();
+  }
 }

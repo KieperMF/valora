@@ -24,21 +24,19 @@ final saleController = SaleController();
 
 final router = GoRouter(
   initialLocation: RoutesName.home,
-  refreshListenable: authNotifier,
 
+  refreshListenable: authNotifier,
   redirect: (context, state) {
     debugPrint('redirect');
+    final supa = Supabase.instance.client;
     final isLoggedIn = authNotifier.isLoggedIn;
     final isLoginRoute = state.fullPath == RoutesName.login;
     if (isLoggedIn && isLoginRoute) {
       return RoutesName.home;
     }
 
-    if (state.fullPath == RoutesName.signup) {
-      return RoutesName.signup;
-    }
-
-    if (!isLoggedIn && !isLoginRoute) {
+    if (supa.auth.currentSession?.accessToken == null &&
+        state.fullPath != RoutesName.login) {
       return RoutesName.login;
     }
 

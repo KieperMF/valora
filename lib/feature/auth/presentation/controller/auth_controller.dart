@@ -31,4 +31,8 @@ class AuthController extends ChangeNotifier {
     final response = await _repository.signUp(user: user);
     return response.fold((onSuccess) => true, (onFailure) => false);
   }
+
+  Future<void> logout() async {
+    await _repository.logout();
+  }
 }

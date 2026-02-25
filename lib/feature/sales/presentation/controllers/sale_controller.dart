@@ -7,6 +7,12 @@ class SaleController extends ChangeNotifier {
   final _repository = sl<SaleRepository>();
 
   List<SaleEntity> sales = [];
+  List<String> paymentMethods = [
+    'Cash',
+    'Credit Card',
+    'Debit Card',
+    'Mobile Payment',
+  ];
 
   Future<void> featchSales() async {
     final result = await _repository.getSales();
@@ -22,5 +28,9 @@ class SaleController extends ChangeNotifier {
       sales.add(newSale);
       notifyListeners();
     }, (error) {});
+  }
+
+  Future<void> logout() async {
+    await _repository.logout();
   }
 }

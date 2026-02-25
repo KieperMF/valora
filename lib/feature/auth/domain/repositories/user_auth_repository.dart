@@ -5,4 +5,5 @@ import 'package:result_dart/result_dart.dart';
 abstract class UserAuthRepository {
   AsyncResult<Unit> login({required UserAuthEntity user});
   AsyncResult<Unit> signUp({required NewUserEntity user});
+  Future<void> logout();
 }

@@ -18,4 +18,9 @@ class AuthRepositoryImpl implements UserAuthRepository {
   AsyncResult<Unit> signUp({required NewUserEntity user}) {
     return _datasource.signUp(user: user.toDto());
   }
+
+  @override
+  Future<void> logout() async {
+    await _datasource.logout();
+  }
 }

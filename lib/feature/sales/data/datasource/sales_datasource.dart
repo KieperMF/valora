@@ -37,4 +37,8 @@ class SalesDatasource {
       return Failure(Exception(e));
     }
   }
+
+  Future<void> logout() async {
+    await _supa.auth.signOut();
+  }
 }
