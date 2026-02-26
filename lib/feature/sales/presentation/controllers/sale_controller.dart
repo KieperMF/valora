@@ -7,12 +7,18 @@ class SaleController extends ChangeNotifier {
   final _repository = sl<SaleRepository>();
 
   List<SaleEntity> sales = [];
+  SaleEntity saleRegister = SaleEntity.toEmpty();
   List<String> paymentMethods = [
-    'Cash',
-    'Credit Card',
-    'Debit Card',
-    'Mobile Payment',
+    'Dinheiro',
+    'Cartão de Crédito',
+    'Cartão de Débito',
+    'Pix',
   ];
+
+  void setPaymentMethod(String paymentMethod) {
+    saleRegister.paymentMethod = paymentMethod;
+    notifyListeners();
+  }
 
   Future<void> featchSales() async {
     final result = await _repository.getSales();
