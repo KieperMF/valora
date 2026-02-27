@@ -7,7 +7,6 @@ import 'package:valora/core/routes/routes_name.dart';
 import 'package:valora/feature/customer/domain/entities/customer_entity.dart';
 import 'package:valora/feature/customer/domain/validators/new_customer_validator.dart';
 import 'package:valora/feature/customer/presentation/controllers/customer_controller.dart';
-import 'package:provider/provider.dart';
 
 class CustomerRegisterPage extends StatefulWidget {
   const CustomerRegisterPage({super.key});
@@ -20,10 +19,10 @@ class _CustomerRegisterPageState extends State<CustomerRegisterPage> {
   final _formKey = GlobalKey<FormState>();
   CustomerEntity customer = CustomerEntity.toEmpty();
   final validator = NewCustomerValidator();
+  final controller = CustomerController();
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.watch<CustomerController>();
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(

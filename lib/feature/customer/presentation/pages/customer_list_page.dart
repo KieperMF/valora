@@ -5,7 +5,6 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:valora/core/colors/app_colors.dart';
 import 'package:valora/core/routes/routes_name.dart';
 import 'package:valora/feature/customer/presentation/controllers/customer_controller.dart';
-import 'package:provider/provider.dart';
 
 class CustomerListPage extends StatefulWidget {
   const CustomerListPage({super.key});
@@ -15,18 +14,18 @@ class CustomerListPage extends StatefulWidget {
 }
 
 class _CustomerListPageState extends State<CustomerListPage> {
+  final controller = CustomerController();
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      context.read<CustomerController>().getCustomers();
+      controller.getCustomers();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.watch<CustomerController>();
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(

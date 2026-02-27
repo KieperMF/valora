@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:provider/provider.dart';
 import 'package:valora/feature/sales/presentation/controllers/sale_controller.dart';
 
 class SalesListPage extends StatefulWidget {
@@ -11,9 +11,10 @@ class SalesListPage extends StatefulWidget {
 }
 
 class _SalesListPageState extends State<SalesListPage> {
+  final controller = SaleController();
+
   @override
   Widget build(BuildContext context) {
-    final controller = context.watch<SaleController>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sales List'),
@@ -21,13 +22,14 @@ class _SalesListPageState extends State<SalesListPage> {
           IconButton(
             onPressed: () async {
               await controller.logout();
+              context.go('/login');
             },
             icon: Icon(LucideIcons.logOut),
           ),
         ],
       ),
       body: RefreshIndicator(
-        onRefresh: () => controller.featchSales(),
+        onRefresh: () => controller.fetchSales(),
         child: Stack(
           children: [
             Column(

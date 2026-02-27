@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
@@ -6,7 +7,6 @@ import 'package:valora/core/colors/app_colors.dart';
 import 'package:valora/core/routes/routes_name.dart';
 import 'package:valora/feature/products/domain/entities/product_entity.dart';
 import 'package:valora/feature/products/presentation/controllers/product_controller.dart';
-import 'package:provider/provider.dart';
 
 class ProductsListPage extends StatefulWidget {
   const ProductsListPage({super.key});
@@ -16,18 +16,18 @@ class ProductsListPage extends StatefulWidget {
 }
 
 class _ProductsListPageState extends State<ProductsListPage> {
+  final controller = ProductController();
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      context.read<ProductController>().fetchProducts();
+      controller.fetchProducts();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.watch<ProductController>();
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -46,48 +46,55 @@ class _ProductsListPageState extends State<ProductsListPage> {
             padding: const EdgeInsets.all(12.0),
             child: Stack(
               children: [
-                Column(
-                  children: [
-                    controller.products.isEmpty
-                        ? SingleChildScrollView(
-                            physics: AlwaysScrollableScrollPhysics(),
-                            child: SizedBox(
-                              height: 200.h,
-                              child: Center(
-                                child: Text(
-                                  'Nenhum produto cadastrado.',
-                                  style: TextStyle(fontSize: 16.h),
+                Observer(
+                  builder: (context) {
+                    return Column(
+                      children: [
+                        controller.products.isEmpty
+                            ? SingleChildScrollView(
+                                physics: AlwaysScrollableScrollPhysics(),
+                                child: SizedBox(
+                                  height: 200.h,
+                                  child: Center(
+                                    child: Text(
+                                      'Nenhum produto cadastrado.',
+                                      style: TextStyle(fontSize: 16.h),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    buildStockInfo(
+                                      totalProducts: controller.products.length,
+                                    ),
+                                    SizedBox(height: 12.h),
+
+                                    ListView.builder(
+                                      physics: AlwaysScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemCount: controller.products.length,
+                                      itemBuilder: (context, index) {
+                                        final product =
+                                            controller.products[index];
+                                        return Padding(
+                                          padding: EdgeInsetsGeometry.only(
+                                            bottom: 12.h,
+                                          ),
+                                          child: buildProductItem(
+                                            product: product,
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ),
-                          )
-                        : Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                buildStockInfo(
-                                  totalProducts: controller.products.length,
-                                ),
-                                SizedBox(height: 12.h),
-
-                                ListView.builder(
-                                  physics: AlwaysScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  itemCount: controller.products.length,
-                                  itemBuilder: (context, index) {
-                                    final product = controller.products[index];
-                                    return Padding(
-                                      padding: EdgeInsetsGeometry.only(
-                                        bottom: 12.h,
-                                      ),
-                                      child: buildProductItem(product: product),
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                  ],
+                      ],
+                    );
+                  },
                 ),
                 Align(
                   alignment: AlignmentGeometry.bottomRight,
