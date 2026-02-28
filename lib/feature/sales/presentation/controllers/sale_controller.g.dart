@@ -12,13 +12,13 @@ mixin _$SaleController on SaleStore, Store {
   late final _$salesAtom = Atom(name: 'SaleStore.sales', context: context);
 
   @override
-  ObservableList<SaleEntity> get sales {
+  List<SaleEntity> get sales {
     _$salesAtom.reportRead();
     return super.sales;
   }
 
   @override
-  set sales(ObservableList<SaleEntity> value) {
+  set sales(List<SaleEntity> value) {
     _$salesAtom.reportWrite(value, super.sales, () {
       super.sales = value;
     });
@@ -48,13 +48,13 @@ mixin _$SaleController on SaleStore, Store {
   );
 
   @override
-  ObservableList<String> get paymentMethods {
+  List<String> get paymentMethods {
     _$paymentMethodsAtom.reportRead();
     return super.paymentMethods;
   }
 
   @override
-  set paymentMethods(ObservableList<String> value) {
+  set paymentMethods(List<String> value) {
     _$paymentMethodsAtom.reportWrite(value, super.paymentMethods, () {
       super.paymentMethods = value;
     });

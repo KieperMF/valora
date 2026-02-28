@@ -11,18 +11,18 @@ abstract class SaleStore with Store {
   final _repository = sl<SaleRepository>();
 
   @observable
-  ObservableList<SaleEntity> sales = ObservableList<SaleEntity>();
+  List<SaleEntity> sales = [];
 
   @observable
   SaleEntity saleRegister = SaleEntity.toEmpty();
 
   @observable
-  ObservableList<String> paymentMethods = ObservableList.of([
+  List<String> paymentMethods = [
     'Dinheiro',
     'Cartão de Crédito',
     'Cartão de Débito',
     'Pix',
-  ]);
+  ];
 
   @action
   void setPaymentMethod(String paymentMethod) {
