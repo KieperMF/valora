@@ -11,34 +11,37 @@ class HomeNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Observer(
-        builder: (context) {
-          return IndexedStack(
+    return Observer(
+      builder: (context) {
+        return Scaffold(
+          body: IndexedStack(
             index: controller.currentIndex,
             children: const [
               SalesListPage(),
               CustomerListPage(),
               ProductsListPage(),
             ],
-          );
-        },
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: controller.currentIndex,
-        onTap: controller.changeTab,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopify_sharp),
-            label: 'Vendas',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.supervisor_account),
-            label: 'Clientes',
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: controller.currentIndex,
+            onTap: controller.changeTab,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.shopify_sharp),
+                label: 'Vendas',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.supervisor_account),
+                label: 'Clientes',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.list),
+                label: 'Produtos',
+              ),
+            ],
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Produtos'),
-        ],
-      ),
+        );
+      },
     );
   }
 }

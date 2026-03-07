@@ -33,7 +33,7 @@ class LoginPage extends StatelessWidget {
                       alignment: AlignmentGeometry.topCenter,
                       child: Row(
                         spacing: 12,
-                        mainAxisAlignment: .center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
                             "assets/sales_icon.png",
@@ -52,8 +52,8 @@ class LoginPage extends StatelessWidget {
                     ),
                     Expanded(
                       child: Column(
-                        mainAxisAlignment: .center,
-                        crossAxisAlignment: .center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           TextFormField(
                             onChanged: user.setEmail,

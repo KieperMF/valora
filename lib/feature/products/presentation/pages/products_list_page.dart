@@ -72,22 +72,25 @@ class _ProductsListPageState extends State<ProductsListPage> {
                                     ),
                                     SizedBox(height: 12.h),
 
-                                    ListView.builder(
-                                      physics: AlwaysScrollableScrollPhysics(),
-                                      shrinkWrap: true,
-                                      itemCount: controller.products.length,
-                                      itemBuilder: (context, index) {
-                                        final product =
-                                            controller.products[index];
-                                        return Padding(
-                                          padding: EdgeInsetsGeometry.only(
-                                            bottom: 12.h,
-                                          ),
-                                          child: buildProductItem(
-                                            product: product,
-                                          ),
-                                        );
-                                      },
+                                    Expanded(
+                                      child: ListView.builder(
+                                        physics:
+                                            AlwaysScrollableScrollPhysics(),
+                                        shrinkWrap: true,
+                                        itemCount: controller.products.length,
+                                        itemBuilder: (context, index) {
+                                          final product =
+                                              controller.products[index];
+                                          return Padding(
+                                            padding: EdgeInsetsGeometry.only(
+                                              bottom: 12.h,
+                                            ),
+                                            child: buildProductItem(
+                                              product: product,
+                                            ),
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ],
                                 ),

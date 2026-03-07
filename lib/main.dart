@@ -9,7 +9,7 @@ void main() async {
   await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
-    url: dotenv.env['supabaseURl']!,
+    url: dotenv.env['supabaseURL']!,
     anonKey: dotenv.env['supabaseKey']!,
   );
   setupDepencies();

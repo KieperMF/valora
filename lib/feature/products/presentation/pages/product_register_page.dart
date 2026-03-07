@@ -8,7 +8,6 @@ import 'package:valora/core/routes/routes_name.dart';
 import 'package:valora/feature/products/domain/entities/product_entity.dart';
 import 'package:valora/feature/products/domain/validators/product_validator.dart';
 import 'package:valora/feature/products/presentation/controllers/product_controller.dart';
-import 'package:provider/provider.dart';
 
 class ProductRegisterPage extends StatefulWidget {
   const ProductRegisterPage({super.key});
@@ -22,10 +21,10 @@ class _ProductRegisterPageState extends State<ProductRegisterPage> {
   final product = ProductEntity.toEmpty();
   final validator = ProductValidator();
   final quantityCtl = TextEditingController();
+  final controller = ProductController();
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.watch<ProductController>();
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -51,7 +50,7 @@ class _ProductRegisterPageState extends State<ProductRegisterPage> {
                 Expanded(
                   child: Column(
                     spacing: 12.h,
-                    mainAxisAlignment: .center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextFormField(
                         onChanged: product.setName,
