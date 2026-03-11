@@ -33,6 +33,28 @@ class SaleEntity {
     );
   }
 
+  SaleEntity copyWith({
+    String? paymentMethod,
+    String? customerName,
+    List<SaleItemsEntity>? items,
+    String? id,
+    String? customerId,
+    String? companyId,
+    double? totalPrice,
+    int? quantity,
+  }) {
+    return SaleEntity(
+      id: id,
+      customerId: customerId ?? this.customerId,
+      companyId: companyId ?? this.companyId,
+      totalPrice: totalPrice ?? this.totalPrice,
+      quantity: quantity ?? this.quantity,
+      paymentMethod: paymentMethod ?? this.paymentMethod,
+      customerName: customerName ?? this.customerName,
+      items: items ?? this.items,
+    );
+  }
+
   set setId(String? value) {
     id = value;
   }

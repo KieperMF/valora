@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:valora/core/routes/routes_name.dart';
 import 'package:valora/feature/sales/presentation/controllers/sale_controller.dart';
 
 class SalesListPage extends StatefulWidget {
@@ -69,7 +70,9 @@ class _SalesListPageState extends State<SalesListPage> {
             Align(
               alignment: AlignmentGeometry.bottomRight,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.go(RoutesName.saleRegister);
+                },
                 child: const Text('Registrar venda'),
               ),
             ),

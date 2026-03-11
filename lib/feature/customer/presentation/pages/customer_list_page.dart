@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
@@ -41,7 +42,7 @@ class _CustomerListPageState extends State<CustomerListPage> {
         padding: EdgeInsetsGeometry.all(12),
         child: Stack(
           children: [
-            Builder(
+            Observer(
               builder: (context) {
                 return RefreshIndicator(
                   onRefresh: () => controller.getCustomers(),
@@ -49,9 +50,15 @@ class _CustomerListPageState extends State<CustomerListPage> {
                     children: [
                       controller.customers.isEmpty
                           ? Center(
-                              child: Text(
-                                'Nenhum cliente cadastrado.',
-                                style: TextStyle(fontSize: 16),
+                              child: SizedBox(
+                                height: 200.h,
+                                child: SingleChildScrollView(
+                                  physics: AlwaysScrollableScrollPhysics(),
+                                  child: Text(
+                                    'Nenhum cliente cadastrado.',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ),
                               ),
                             )
                           : Expanded(

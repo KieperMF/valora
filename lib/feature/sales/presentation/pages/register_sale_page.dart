@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
+import 'package:textfield_search/textfield_search.dart';
 import 'package:valora/core/routes/routes_name.dart';
 import 'package:valora/feature/sales/presentation/controllers/sale_controller.dart';
 
@@ -14,6 +15,8 @@ class RegisterSalePage extends StatefulWidget {
 class _RegisterSalePageState extends State<RegisterSalePage> {
   final controller = SaleController();
 
+  TextEditingController customerCtl = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,49 +29,61 @@ class _RegisterSalePageState extends State<RegisterSalePage> {
           icon: Icon(Icons.chevron_left),
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                TextField(
-                  decoration: const InputDecoration(labelText: 'Product'),
-                ),
-                TextField(
-                  decoration: const InputDecoration(labelText: 'Quantity'),
-                  keyboardType: TextInputType.number,
-                ),
-                Observer(
-                  builder: (context) {
-                    return DropdownButton<String>(
-                      value: controller.paymentMethods.first,
-                      items: controller.paymentMethods
-                          .map(
-                            (method) => DropdownMenuItem(
-                              value: method,
-                              child: Text(method),
-                            ),
-                          )
-                          .toList(),
-                      onChanged: (value) {
-                        controller.setPaymentMethod(value!);
-                      },
-                    );
-                  },
-                ),
-                Align(
-                  alignment: AlignmentGeometry.bottomCenter,
-                  child: TextButton(
-                    onPressed: () {
-                      controller.registerSale(newSale: controller.saleRegister);
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  TextFieldSearch(
+                    label: "Cliente",
+                    controller: customerCtl,
+                    future: () {
+                      return controller.fetchCustomer(name: customerCtl.text);
                     },
-                    child: const Text('Register Sale'),
                   ),
-                ),
-              ],
+                  TextField(
+                    decoration: const InputDecoration(labelText: 'Product'),
+                  ),
+                  TextField(
+                    decoration: const InputDecoration(labelText: 'Quantity'),
+                    keyboardType: TextInputType.number,
+                  ),
+                  Observer(
+                    builder: (context) {
+                      return DropdownButton<String>(
+                        value: controller.saleRegister.paymentMethod,
+                        items: controller.paymentMethods
+                            .map(
+                              (method) => DropdownMenuItem(
+                                value: method,
+                                child: Text(method),
+                              ),
+                            )
+                            .toList(),
+                        onChanged: (value) {
+                          controller.setPaymentMethod(value!);
+                        },
+                      );
+                    },
+                  ),
+                  Align(
+                    alignment: AlignmentGeometry.bottomCenter,
+                    child: TextButton(
+                      onPressed: () {
+                        controller.registerSale(
+                          newSale: controller.saleRegister,
+                        );
+                      },
+                      child: const Text('Register Sale'),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
