@@ -27,4 +27,22 @@ class ProductDatasource {
       return Failure(Exception(e));
     }
   }
+
+  AsyncResult<List<ProductDto>> getProductsByName({
+    required String name,
+  }) async {
+    try {
+      final result = await supa
+          .from('products')
+          .select()
+          .ilike('name', "%$name%");
+      final data = result.map((e) {
+        return ProductDto.fromJson(e);
+      }).toList();
+
+      return Success(data);
+    } catch (e) {
+      return Failure(Exception(e));
+    }
+  }
 }

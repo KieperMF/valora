@@ -10,7 +10,7 @@ part 'product_controller.g.dart';
 class ProductController = ProductStore with _$ProductController;
 
 abstract class ProductStore with Store {
-  final repository = sl<ProductReository>();
+  final repository = sl<ProductRepository>();
 
   @observable
   List<ProductEntity> products = [];

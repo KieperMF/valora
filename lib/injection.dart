@@ -28,7 +28,7 @@ void setupDepencies() {
   //Repositories
   sl.registerSingleton<UserAuthRepository>(AuthRepositoryImpl());
   sl.registerSingleton<HomeRepository>(HomeRepositoryImpl());
-  sl.registerSingleton<ProductReository>(ProductRepositoryImpl());
+  sl.registerSingleton<ProductRepository>(ProductRepositoryImpl());
   sl.registerSingleton<CustomerRepository>(CustomerRepositoryImpl());
   sl.registerSingleton<SaleRepository>(SaleRepositoryImpl());
 }

@@ -5,18 +5,29 @@ import 'package:valora/feature/products/domain/repositories/product_repository.d
 import 'package:valora/injection.dart';
 import 'package:result_dart/result_dart.dart';
 
-class ProductRepositoryImpl implements ProductReository {
+class ProductRepositoryImpl implements ProductRepository {
   final data = sl<ProductDatasource>();
 
   @override
-  AsyncResult<Unit> createProduct({required ProductEntity product}) {
-    return data.createProduct(product: product.toDto());
+  AsyncResult<Unit> createProduct({required ProductEntity product}) async {
+    return await data.createProduct(product: product.toDto());
   }
 
   @override
   AsyncResult<List<ProductEntity>> getProducts() async {
-    return data.getProducts().map(
+    return await data.getProducts().map(
       (productsDto) => productsDto.map((dto) => dto.toEntity()).toList(),
     );
+  }
+
+  @override
+  AsyncResult<List<ProductEntity>> getProductsByName({
+    required String name,
+  }) async {
+    return await data
+        .getProductsByName(name: name)
+        .map(
+          (productsDto) => productsDto.map((dto) => dto.toEntity()).toList(),
+        );
   }
 }

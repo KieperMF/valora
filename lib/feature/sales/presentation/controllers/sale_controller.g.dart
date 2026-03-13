@@ -24,6 +24,42 @@ mixin _$SaleController on SaleStore, Store {
     });
   }
 
+  late final _$customersAtom = Atom(
+    name: 'SaleStore.customers',
+    context: context,
+  );
+
+  @override
+  List<CustomerEntity> get customers {
+    _$customersAtom.reportRead();
+    return super.customers;
+  }
+
+  @override
+  set customers(List<CustomerEntity> value) {
+    _$customersAtom.reportWrite(value, super.customers, () {
+      super.customers = value;
+    });
+  }
+
+  late final _$productsAtom = Atom(
+    name: 'SaleStore.products',
+    context: context,
+  );
+
+  @override
+  List<ProductEntity> get products {
+    _$productsAtom.reportRead();
+    return super.products;
+  }
+
+  @override
+  set products(List<ProductEntity> value) {
+    _$productsAtom.reportWrite(value, super.products, () {
+      super.products = value;
+    });
+  }
+
   late final _$saleRegisterAtom = Atom(
     name: 'SaleStore.saleRegister',
     context: context,
@@ -82,6 +118,30 @@ mixin _$SaleController on SaleStore, Store {
     );
   }
 
+  late final _$fetchCustomerAsyncAction = AsyncAction(
+    'SaleStore.fetchCustomer',
+    context: context,
+  );
+
+  @override
+  Future<List<String>> fetchCustomer({required String name}) {
+    return _$fetchCustomerAsyncAction.run(
+      () => super.fetchCustomer(name: name),
+    );
+  }
+
+  late final _$fetchProductsAsyncAction = AsyncAction(
+    'SaleStore.fetchProducts',
+    context: context,
+  );
+
+  @override
+  Future<List<String>> fetchProducts({required String name}) {
+    return _$fetchProductsAsyncAction.run(
+      () => super.fetchProducts(name: name),
+    );
+  }
+
   late final _$logoutAsyncAction = AsyncAction(
     'SaleStore.logout',
     context: context,
@@ -113,6 +173,8 @@ mixin _$SaleController on SaleStore, Store {
   String toString() {
     return '''
 sales: ${sales},
+customers: ${customers},
+products: ${products},
 saleRegister: ${saleRegister},
 paymentMethods: ${paymentMethods}
     ''';

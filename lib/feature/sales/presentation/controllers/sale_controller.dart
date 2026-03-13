@@ -1,6 +1,8 @@
 import 'package:mobx/mobx.dart';
 import 'package:valora/feature/customer/domain/entities/customer_entity.dart';
 import 'package:valora/feature/customer/domain/repositories/customer_repository.dart';
+import 'package:valora/feature/products/domain/entities/product_entity.dart';
+import 'package:valora/feature/products/domain/repositories/product_repository.dart';
 import 'package:valora/feature/sales/domain/entities/sale_entity.dart';
 import 'package:valora/feature/sales/domain/repositories/sale_repository.dart';
 import 'package:valora/injection.dart';
@@ -12,12 +14,16 @@ class SaleController = SaleStore with _$SaleController;
 abstract class SaleStore with Store {
   final _repository = sl<SaleRepository>();
   final _customerRepository = sl<CustomerRepository>();
+  final productRepository = sl<ProductRepository>();
 
   @observable
   List<SaleEntity> sales = [];
 
   @observable
   List<CustomerEntity> customers = [];
+
+  @observable
+  List<ProductEntity> products = [];
 
   @observable
   SaleEntity saleRegister = SaleEntity.toEmpty().copyWith(
@@ -63,6 +69,21 @@ abstract class SaleStore with Store {
       (result) {
         customers = result;
         return customers.map((e) => e.name).toList();
+      },
+      (error) {
+        return [];
+      },
+    );
+  }
+
+  @action
+  Future<List<String>> fetchProducts({required String name}) async {
+    final result = await productRepository.getProductsByName(name: name);
+
+    return result.fold(
+      (result) {
+        products = result;
+        return products.map((e) => e.name).toList();
       },
       (error) {
         return [];
