@@ -19,4 +19,11 @@ class CustomerRepositoryImpl implements CustomerRepository {
       (dtos) => dtos.map((dto) => dto.toEntity()).toList(),
     );
   }
+
+  @override
+  AsyncResult<List<CustomerEntity>> getCustomerByName(String name) {
+    return data
+        .getCustomerByName(name)
+        .map((dtos) => dtos.map((dto) => dto.toEntity()).toList());
+  }
 }

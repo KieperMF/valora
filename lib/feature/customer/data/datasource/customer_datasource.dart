@@ -26,4 +26,17 @@ class CustomerDatasource {
       return Failure(Exception(e));
     }
   }
+
+  AsyncResult<List<CustomerDto>> getCustomerByName(String name) async {
+    try {
+      final response = await supa
+          .from('customers')
+          .select()
+          .like('name', '%$name%');
+
+      return Success(response.map((e) => CustomerDto.fromMap(e)).toList());
+    } catch (e) {
+      return Failure(Exception(e));
+    }
+  }
 }

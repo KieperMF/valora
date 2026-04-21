@@ -4,4 +4,5 @@ import 'package:result_dart/result_dart.dart';
 abstract class CustomerRepository {
   AsyncResult<Unit> addCustomer(CustomerEntity customer);
   AsyncResult<List<CustomerEntity>> getCustomers();
+  AsyncResult<List<CustomerEntity>> getCustomerByName(String name);
 }
