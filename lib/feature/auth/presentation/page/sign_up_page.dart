@@ -136,31 +136,45 @@ class SignUpPage extends StatelessWidget {
                             style: TextStyle(),
                           ),
                           SizedBox(height: 40.h),
-                          GestureDetector(
-                            onTap: () async {
-                              HapticFeedback.vibrate();
-                              if (_key.currentState!.validate()) {
-                                final result = await controller.signUp(
-                                  user: user,
-                                );
-                                if (result) {
-                                  context.go(RoutesName.home);
-                                }
-                              }
-                            },
-                            child: Container(
-                              height: 48.h,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                color: Color(0xfff1e90ff),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "Criar conta",
-                                  style: TextStyle(color: Colors.white),
+                          ValueListenableBuilder(
+                            valueListenable: controller.loadindLogin,
+                            builder: (context, value, child) {
+                              return GestureDetector(
+                                onTap: () async {
+                                  HapticFeedback.vibrate();
+                                  if (_key.currentState!.validate()) {
+                                    final result = await controller.signUp(
+                                      user: user,
+                                    );
+                                    if (result) {
+                                      context.go(RoutesName.home);
+                                    }
+                                  }
+                                },
+                                child: Container(
+                                  height: 48.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: Color(0xfff1e90ff),
+                                  ),
+                                  child: Center(
+                                    child: value
+                                        ? CircularProgressIndicator.adaptive(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                                  Colors.green,
+                                                ),
+                                          )
+                                        : Text(
+                                            "Criar conta",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                  ),
                                 ),
-                              ),
-                            ),
+                              );
+                            },
                           ),
                         ],
                       ),

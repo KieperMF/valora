@@ -11,6 +11,7 @@ class AuthController extends ChangeNotifier {
   bool showConfirm = true;
   final user = NewUserEntity.toEmpty();
   final userAuth = UserAuthEntity.toEmpty();
+  ValueNotifier<bool> loadindLogin = ValueNotifier(false);
 
   void setShowPassword() {
     showPassword = !showPassword;
@@ -23,13 +24,33 @@ class AuthController extends ChangeNotifier {
   }
 
   Future<bool> login({required UserAuthEntity user}) async {
+    loadindLogin.value = true;
     final response = await _repository.login(user: user);
-    return response.fold((onSuccess) => true, (onFailure) => false);
+    return response.fold(
+      (onSuccess) {
+        loadindLogin.value = false;
+        return true;
+      },
+      (onFailure) {
+        loadindLogin.value = false;
+        return false;
+      },
+    );
   }
 
   Future<bool> signUp({required NewUserEntity user}) async {
+    loadindLogin.value = true;
     final response = await _repository.signUp(user: user);
-    return response.fold((onSuccess) => true, (onFailure) => false);
+    return response.fold(
+      (onSuccess) {
+        loadindLogin.value = false;
+        return true;
+      },
+      (onFailure) {
+        loadindLogin.value = false;
+        return false;
+      },
+    );
   }
 
   Future<void> logout() async {

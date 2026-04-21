@@ -46,10 +46,10 @@ class _RegisterSalePageState extends State<RegisterSalePage> {
 
                         return customers
                             .map(
-                              (customer) => {
-                                'label': customer.name,
-                                'value': customer,
-                              },
+                              (customer) => SearchItem(
+                                label: customer.name,
+                                value: customer,
+                              ),
                             )
                             .toList();
                       },
@@ -102,7 +102,7 @@ class _RegisterSalePageState extends State<RegisterSalePage> {
 }
 
 class SearchItem<T> {
-  final String label; // O pacote EXIGE este nome
+  final String label;
   final T value;
 
   SearchItem({required this.label, required this.value});
